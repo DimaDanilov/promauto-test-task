@@ -4,6 +4,7 @@ import { App } from "./components/App";
 import "./index.less";
 import "core-js/stable";
 import "regenerator-runtime/runtime";
+import "normalize.css";
 
 const container = document.getElementById("root");
 const root = createRoot(container);
