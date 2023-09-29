@@ -32,7 +32,7 @@ export const ModalWindow = ({
         {usersStore.users.map(
           (u) =>
             u.name.toLowerCase().includes(search.toLowerCase()) && (
-              <ModalWindowElement user={u} />
+              <ModalWindowElement key={u.id} user={u} />
             )
         )}
       </div>

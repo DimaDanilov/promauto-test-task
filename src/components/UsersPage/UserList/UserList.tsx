@@ -17,7 +17,9 @@ export const UserList = observer(() => {
     fetchUsers();
   }, []);
 
-  const userCards = usersStore.filteredUsers.map((u) => <UserCard user={u} />);
+  const userCards = usersStore.filteredUsers.map((u) => (
+    <UserCard key={u.id} user={u} />
+  ));
 
   return (
     <div className="user-cards-container">
