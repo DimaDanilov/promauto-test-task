@@ -31,6 +31,7 @@ export const UserSearch = () => {
         )}
       </div>
       <ModalWindow
+        search={search}
         isModalActive={isModalActive}
         setModalActive={setModalActive}
       />

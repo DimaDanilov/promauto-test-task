@@ -1,5 +1,5 @@
 import React from "react";
-import { makeAutoObservable, computed } from "mobx";
+import { makeAutoObservable } from "mobx";
 import { UserModel } from "../models/UserModel";
 import { getUsers } from "../api/UserApi";
 

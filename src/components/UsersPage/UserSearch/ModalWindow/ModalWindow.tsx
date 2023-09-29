@@ -4,11 +4,13 @@ import { ModalWindowElement } from "./ModalWindowElement/ModalWindowElement";
 import { useUsersStore } from "../../../../store/UsersStore";
 
 type ModalWindowProps = {
+  search: string;
   isModalActive: boolean;
   setModalActive: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export const ModalWindow = ({
+  search,
   isModalActive,
   setModalActive,
 }: ModalWindowProps) => {
@@ -27,9 +29,12 @@ export const ModalWindow = ({
         onClick={() => setModalActive(false)}
       />
       <div className="modal-window" onClick={(e) => e.stopPropagation()}>
-        {usersStore.users.map((u) => (
-          <ModalWindowElement user={u} />
-        ))}
+        {usersStore.users.map(
+          (u) =>
+            u.name.toLowerCase().includes(search.toLowerCase()) && (
+              <ModalWindowElement user={u} />
+            )
+        )}
       </div>
     </div>
   );
