@@ -1,20 +1,26 @@
-import React, { useState, useEffect } from "react";
-import { getUsers } from "../../../api/UserApi";
-import { UserModel } from "../../../models/UserModel";
+import React, { useEffect, useState } from "react";
 import { UserCard } from "./UserCard/UserCard";
 import "./UserList.less";
+import { useUsersStore } from "../../../store/UsersStore";
 
 export const UserList = () => {
-  const [userList, setUserList] = useState<UserModel[]>([]);
+  const usersStore = useUsersStore();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const fetchUsers = async () => {
-      setUserList(await getUsers());
-    };
+    async function fetchUsers() {
+      await usersStore.setUsers();
+      setIsLoading(false);
+    }
+
     fetchUsers();
   }, []);
 
-  const userCards = userList.map((u) => <UserCard user={u} />);
+  const userCards = usersStore.users.map((u) => <UserCard user={u} />);
 
-  return <div className="user-cards-container">{userCards}</div>;
+  return (
+    <div className="user-cards-container">
+      {isLoading ? <p>Loading...</p> : userCards}
+    </div>
+  );
 };
