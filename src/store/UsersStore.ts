@@ -18,15 +18,27 @@ class UsersStore {
   addFilter = (filterId: number) => {
     this.filters.push(filterId);
   };
+
   removeFilter = (filterId: number) => {
     this.filters = this.filters.filter((f) => {
       return f !== filterId;
     });
   };
+
+  clearFilters = () => {
+    this.filters = [];
+  };
+
   get filteredUsers() {
     if (this.filters.length) {
       return this.users.filter((u) => this.filters.includes(u.id));
     } else return this.users;
+  }
+
+  get filteredUsersNames() {
+    return this.users
+      .filter((u) => this.filters.includes(u.id))
+      .map((u) => u.name);
   }
 }
 
