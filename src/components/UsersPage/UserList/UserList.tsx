@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { getUsers } from "../../api/UserApi";
-import { UserModel } from "../../models/UserModel";
+import { getUsers } from "../../../api/UserApi";
+import { UserModel } from "../../../models/UserModel";
 import { UserCard } from "./UserCard/UserCard";
 import "./UserList.less";
 
