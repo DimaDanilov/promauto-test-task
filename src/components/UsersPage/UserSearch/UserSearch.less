@@ -1,7 +1,30 @@
+@import "../../../ui/globalStyles.less";
+
 .user-search-container {
   width: 100%;
 }
 
-.user-search {
+.user-search-window-container {
   width: 40%;
+  position: relative;
+}
+
+.user-search {
+  width: 95%;
+  padding: 15px 10px;
+  border-radius: 10px;
+  background-color: #bg-colors[thirdary];
+  color: #text-colors[primary];
+  border: 0;
+}
+
+.user-search::placeholder {
+  color: #text-colors[primary];
+}
+
+.search-arrow {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
