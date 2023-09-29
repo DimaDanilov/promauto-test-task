@@ -5,6 +5,7 @@
 }
 
 .user-search-window-container {
+  min-width: 500px;
   width: 40%;
   position: relative;
 }
@@ -27,4 +28,11 @@
   right: 0;
   top: 50%;
   transform: translate(-50%, -50%);
+}
+
+@media (max-width: 540px) {
+  .user-search-window-container {
+    min-width: auto;
+    width: 100%;
+  }
 }
