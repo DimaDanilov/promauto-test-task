@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import "./UserSearch.less";
 import { ModalWindow } from "./ModalWindow/ModalWindow";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import { KeyboardArrowUp } from "@mui/icons-material";
+import { KeyboardArrowUp, KeyboardArrowDown } from "@mui/icons-material";
 
 export const UserSearch = () => {
   const [search, setSearch] = useState<string>("");
@@ -28,7 +27,7 @@ export const UserSearch = () => {
         {isModalActive ? (
           <KeyboardArrowUp className="search-arrow" />
         ) : (
-          <KeyboardArrowDownIcon className="search-arrow" />
+          <KeyboardArrowDown className="search-arrow" />
         )}
       </div>
       <ModalWindow

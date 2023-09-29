@@ -1,6 +1,7 @@
 import React from "react";
 import "./ModalWindow.less";
 import { ModalWindowElement } from "./ModalWindowElement/ModalWindowElement";
+import { useUsersStore } from "../../../../store/UsersStore";
 
 type ModalWindowProps = {
   isModalActive: boolean;
@@ -11,6 +12,8 @@ export const ModalWindow = ({
   isModalActive,
   setModalActive,
 }: ModalWindowProps) => {
+  const usersStore = useUsersStore();
+
   return (
     <div
       className="modal-relative"
@@ -24,8 +27,9 @@ export const ModalWindow = ({
         onClick={() => setModalActive(false)}
       />
       <div className="modal-window" onClick={(e) => e.stopPropagation()}>
-        <ModalWindowElement element="Scales" />
-        <ModalWindowElement element="Horns" />
+        {usersStore.users.map((u) => (
+          <ModalWindowElement user={u} />
+        ))}
       </div>
     </div>
   );

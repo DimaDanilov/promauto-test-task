@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { observer } from "mobx-react-lite";
 import { UserCard } from "./UserCard/UserCard";
 import "./UserList.less";
 import { useUsersStore } from "../../../store/UsersStore";
 
-export const UserList = () => {
+export const UserList = observer(() => {
   const usersStore = useUsersStore();
   const [isLoading, setIsLoading] = useState(true);
 
@@ -16,11 +17,11 @@ export const UserList = () => {
     fetchUsers();
   }, []);
 
-  const userCards = usersStore.users.map((u) => <UserCard user={u} />);
+  const userCards = usersStore.filteredUsers.map((u) => <UserCard user={u} />);
 
   return (
     <div className="user-cards-container">
       {isLoading ? <p>Loading...</p> : userCards}
     </div>
   );
-};
+});
